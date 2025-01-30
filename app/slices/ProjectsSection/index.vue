@@ -51,6 +51,8 @@
               :height="project.data.main_image.dimensions?.height"
               sizes="380px xl:480px"
               class="aspect-[4/3] h-auto w-full rounded-lg object-cover"
+              loading="lazy"
+              format="avif"
             />
           </div>
         </article>

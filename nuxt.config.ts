@@ -57,5 +57,9 @@ export default defineNuxtConfig({
     },
   },
 
+  image: {
+    prismic: {},
+  },
+
   compatibilityDate: "2025-01-06",
 });
