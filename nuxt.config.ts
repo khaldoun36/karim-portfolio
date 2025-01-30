@@ -29,7 +29,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxt/eslint", "@nuxtjs/prismic", "@nuxt/icon", "@vueuse/nuxt"],
+  modules: [
+    "@nuxt/eslint",
+    "@nuxtjs/prismic",
+    "@nuxt/icon",
+    "@vueuse/nuxt",
+    "@nuxt/image",
+  ],
 
   prismic: {
     endpoint: apiEndpoint || repositoryName,

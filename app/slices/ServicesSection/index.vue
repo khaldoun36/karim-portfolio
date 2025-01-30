@@ -4,7 +4,7 @@
       {{ slice.primary.title }}
     </h2>
     <p class="mt-6 max-w-2xl text-lg text-pretty">
-      {{ slice.primary.body }} -- x: {{ x }} y: {{ y }}
+      {{ slice.primary.body }}
     </p>
     <div class="@container mt-10 overflow-x-auto md:mt-12 xl:mt-16">
       <div class="grid gap-8 @2xl:grid-cols-2 @5xl:grid-cols-3">
@@ -44,9 +44,6 @@
 <script setup lang="ts">
 import Container from "~/components/base/Container.vue";
 import type { Content } from "@prismicio/client";
-
-import type { UseMouseEventExtractor } from "@vueuse/core";
-import { useMouse, useParentElement } from "@vueuse/core";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.

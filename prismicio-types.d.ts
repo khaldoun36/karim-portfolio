@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = ServicesSectionSlice | HeroSectionSlice;
+type PageDocumentDataSlicesSlice =
+  | ProjectsSectionSlice
+  | ServicesSectionSlice
+  | HeroSectionSlice;
 
 /**
  * Content for Page documents
@@ -45,7 +48,158 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+/**
+ * Item in *ProjectPage → Important Metrics*
+ */
+export interface ProjectpageDocumentDataImportantMetricsItem {
+  /**
+   * Description field in *ProjectPage → Important Metrics*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.important_metrics[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Percentage field in *ProjectPage → Important Metrics*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.important_metrics[].percentage
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  percentage: prismic.NumberField;
+}
+
+type ProjectpageDocumentDataSlicesSlice = RichTextSlice;
+
+/**
+ * Content for ProjectPage documents
+ */
+interface ProjectpageDocumentData {
+  /**
+   * Title field in *ProjectPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *ProjectPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Main Image field in *ProjectPage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.main_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Category field in *ProjectPage*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Digital Marketing
+   * - **API ID Path**: projectpage.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<
+    "Digital Marketing" | "SEO Optimization",
+    "filled"
+  >;
+
+  /**
+   * Important Metrics field in *ProjectPage*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.important_metrics[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  important_metrics: prismic.GroupField<
+    Simplify<ProjectpageDocumentDataImportantMetricsItem>
+  >;
+
+  /**
+   * Slice Zone field in *ProjectPage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProjectpageDocumentDataSlicesSlice> /**
+   * Meta Title field in *ProjectPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: projectpage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *ProjectPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projectpage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *ProjectPage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projectpage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * ProjectPage document from Prismic
+ *
+ * - **API ID**: `projectpage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectpageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProjectpageDocumentData>,
+    "projectpage",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | ProjectpageDocument;
 
 /**
  * Primary content in *HeroSection → Default → Primary*
@@ -100,6 +254,106 @@ type HeroSectionSliceVariation = HeroSectionSliceDefault;
 export type HeroSectionSlice = prismic.SharedSlice<
   "hero_section",
   HeroSectionSliceVariation
+>;
+
+/**
+ * Primary content in *ProjectsSection → Default → Primary*
+ */
+export interface ProjectsSectionSliceDefaultPrimary {
+  /**
+   * Title field in *ProjectsSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Body field in *ProjectsSection → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects_section.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  body: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ProjectsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectsSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectsSection*
+ */
+type ProjectsSectionSliceVariation = ProjectsSectionSliceDefault;
+
+/**
+ * ProjectsSection Shared Slice
+ *
+ * - **API ID**: `projects_section`
+ * - **Description**: ProjectsSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSectionSlice = prismic.SharedSlice<
+  "projects_section",
+  ProjectsSectionSliceVariation
+>;
+
+/**
+ * Primary content in *RichText → Default → Primary*
+ */
+export interface RichTextSliceDefaultPrimary {
+  /**
+   * Project Body field in *RichText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.default.primary.project_body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  project_body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for RichText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RichTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RichTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *RichText*
+ */
+type RichTextSliceVariation = RichTextSliceDefault;
+
+/**
+ * RichText Shared Slice
+ *
+ * - **API ID**: `rich_text`
+ * - **Description**: RichText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RichTextSlice = prismic.SharedSlice<
+  "rich_text",
+  RichTextSliceVariation
 >;
 
 /**
@@ -228,11 +482,23 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ProjectpageDocument,
+      ProjectpageDocumentData,
+      ProjectpageDocumentDataImportantMetricsItem,
+      ProjectpageDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,
       HeroSectionSliceDefault,
+      ProjectsSectionSlice,
+      ProjectsSectionSliceDefaultPrimary,
+      ProjectsSectionSliceVariation,
+      ProjectsSectionSliceDefault,
+      RichTextSlice,
+      RichTextSliceDefaultPrimary,
+      RichTextSliceVariation,
+      RichTextSliceDefault,
       ServicesSectionSlice,
       ServicesSectionSliceDefaultPrimaryServiceItem,
       ServicesSectionSliceDefaultPrimary,

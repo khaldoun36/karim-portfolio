@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"project_body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sit non dolor Lorem cupidatat dolor cillum proident et nulla enim sint sint nulla."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
