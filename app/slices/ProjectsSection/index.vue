@@ -17,7 +17,7 @@
         class="@container block"
       >
         <article
-          class="grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.3fr_1fr]"
+          class="grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.2fr_1fr]"
         >
           <div>
             <p
@@ -49,6 +49,7 @@
               :alt="String(project.data.main_image.alt)"
               :width="project.data.main_image.dimensions?.width"
               :height="project.data.main_image.dimensions?.height"
+              sizes="380px xl:480px"
               class="aspect-[4/3] h-auto w-full rounded-lg object-cover"
             />
           </div>
