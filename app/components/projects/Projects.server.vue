@@ -38,7 +38,6 @@
               <p class="text-base">{{ item.description }}</p>
             </div> -->
           <NuxtImg
-            format="avif"
             :src="String(project.data.main_image.url)"
             :alt="String(project.data.main_image.alt)"
             :width="project.data.main_image.dimensions?.width"
