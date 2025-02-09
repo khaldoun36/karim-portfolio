@@ -9,9 +9,9 @@
     <div class="@container mt-10 overflow-x-auto md:mt-12 xl:mt-16">
       <div class="grid gap-8 @2xl:grid-cols-2 @5xl:grid-cols-3">
         <NuxtLink
-          to="https://www.theverge.com/"
           v-for="item in slice.primary.service"
           :key="String(item.title)"
+          to="https://www.theverge.com/"
           class="group border-color card relative flex min-w-fit flex-col justify-between rounded-lg border bg-white p-8 pt-16 shadow-xs transition-colors hover:border-gray-300 hover:shadow-sm"
         >
           <div>

@@ -5,12 +5,12 @@
 		"primary": {
 			"title": {
 				"__TYPE__": "FieldContent",
-				"value": "both",
+				"value": "feed",
 				"type": "Text"
 			},
 			"body": {
 				"__TYPE__": "FieldContent",
-				"value": "door",
+				"value": "torn",
 				"type": "Text"
 			}
 		},
