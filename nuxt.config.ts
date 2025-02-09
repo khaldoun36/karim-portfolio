@@ -61,8 +61,9 @@ export default defineNuxtConfig({
   },
 
   image: {
-    prismic: {},
-    format: ["avif", "webp"],
+    prismic: {
+      format: ["avif", "webp"],
+    },
   },
 
   compatibilityDate: "2025-01-06",
