@@ -7,14 +7,12 @@
       {{ slice.primary.body }}
     </p>
     <NuxtIsland name="Projects" />
-    <!-- <Projects /> -->
   </Container>
 </template>
 
 <script setup lang="ts">
 import Container from "~/components/base/Container.vue";
 import type { Content } from "@prismicio/client";
-// import Projects from "~/components/projects/Projects.server.vue";
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.

@@ -4,7 +4,7 @@
     class="mt-10 grid gap-8 divide-y divide-gray-200 md:mt-12 xl:mt-16"
   >
     <NuxtLink
-      v-for="project in projects"
+      v-for="project in projects.length <= 3 ? projects : projects.slice(0, 3)"
       :key="project.id"
       :to="`/projects/${project.uid}`"
       class="@container block"
@@ -28,15 +28,6 @@
           </div>
         </div>
         <div>
-          <!-- <div
-              v-for="item in project.data.important_metrics"
-              class="flex max-w-fit flex-col items-center gap-2 rounded-lg bg-gray-100 p-2"
-            >
-              <p class="text-xl font-semibold text-gray-800">
-                +{{ item.percentage }}%
-              </p>
-              <p class="text-base">{{ item.description }}</p>
-            </div> -->
           <NuxtImg
             :src="String(project.data.main_image.url)"
             :alt="String(project.data.main_image.alt)"
