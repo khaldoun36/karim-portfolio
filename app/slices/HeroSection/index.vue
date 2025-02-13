@@ -68,8 +68,8 @@ defineProps(
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url("@/assets/images/hero-image-desktop.avif") no-repeat center
-    center / cover;
+  background: url("@/assets/images/heroImage.avif") no-repeat center center /
+    cover;
   opacity: 0.6;
 }
 </style>

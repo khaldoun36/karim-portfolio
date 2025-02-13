@@ -1,19 +1,27 @@
 <template>
-  <Container classList="full-width">
+  <Container classList="full-width content-grid">
     <h2 class="mx-auto text-center text-4xl md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>
     <p class="mx-auto mt-6 max-w-2xl text-center text-lg text-pretty">
       {{ slice.primary.body }}
     </p>
-    <div id="testimonials-container" class="mt-10 md:mt-12 xl:mt-16">
-      <div v-if="slice.primary.testimonial" class="flex items-start gap-8">
+    <div
+      class="full-width marquee fade-out-transparent mt-10 max-w-screen overflow-clip md:mt-12 xl:mt-16"
+    >
+      <div v-if="slice.primary.testimonial" class="marquee-track">
         <article
-          v-for="item in slice.primary.testimonial"
-          :key="item.author"
-          class="border-color max-w-prose min-w-[65ch] rounded-lg border bg-white p-8"
+          v-for="(item, index) in [
+            ...slice.primary.testimonial,
+            ...slice.primary.testimonial,
+          ]"
+          :key="String(item.author)"
+          class="border-color marquee-item mx-2 flex h-auto w-[calc(100vw-1rem)] max-w-[calc(100vw-1rem)] flex-col justify-between rounded-lg border bg-white p-8 md:max-w-[80ch] md:min-w-[80ch]"
+          :aria-hidden="index >= slice.primary.testimonial.length"
         >
-          <p class="text-base">{{ item.testimonial?.slice(0, 500) }}</p>
+          <p class="text-base">
+            {{ item.testimonial?.slice(0, 500) }}
+          </p>
           <div class="mt-8 flex items-center justify-between">
             <div class="flex flex-col items-start gap-2">
               <p class="text-sm font-semibold text-gray-800">
@@ -28,12 +36,17 @@
               </p>
             </div>
             <NuxtImg
+              v-if="item.profile_picture.url"
               :src="String(item.profile_picture.url)"
               :alt="String(item.profile_picture.alt)"
               :width="item.profile_picture.dimensions?.width"
               :height="item.profile_picture.dimensions?.height"
               sizes="48px"
-              class="border-color aspect-square h-auto w-full max-w-12 rounded-full border object-cover"
+              class="border-color aspect-square h-auto w-full max-w-12 overflow-clip rounded-full border object-cover"
+            />
+            <div
+              v-else
+              class="border-color aspect-square h-auto w-full max-w-12 overflow-clip rounded-full border bg-gray-200"
             />
           </div>
         </article>
@@ -59,39 +72,42 @@ defineProps(
 </script>
 
 <style scoped>
-#testimonials-container {
-  overflow-x: auto;
-  max-width: 100vw;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  overflow-x: scroll;
+  animation: marquee-animation 32s linear infinite;
 }
-/* #testimonials-container::-webkit-scrollbar {
-  display: none;
-} */
 
-#testimonials-container > div {
-  transform: translateX(1rem);
+@media (hover: hover) {
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+@keyframes marquee-animation {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track::-webkit-scrollbar {
+  display: none;
+}
+
+.fade-out-transparent {
+  --edge-width: 1.5rem;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black var(--edge-width),
+    black calc(100% - var(--edge-width)),
+    transparent
+  );
 }
 
 @media screen and (width >= 48rem) {
-  #testimonials-container > div {
-    transform: translateX(2rem);
-  }
-}
-
-@media screen and (width >= 64rem) {
-  #testimonials-container > div {
-    transform: translateX(3rem);
-  }
-}
-
-@media screen and (width >= 80rem) {
-  #testimonials-container > div {
-    transform: translateX(calc((100vw - (var(--breakpoint-xl) - 4rem)) / 2));
-  }
-}
-
-@media screen and (width >= 96rem) {
-  #testimonials-container > div {
-    transform: translateX(calc((100vw - (var(--breakpoint-2xl) - 4rem)) / 2));
+  .fade-out-transparent {
+    --edge-width: 5rem;
   }
 }
 </style>
