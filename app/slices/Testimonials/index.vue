@@ -95,13 +95,25 @@ defineProps(
 }
 
 .fade-out-transparent {
+  position: relative;
   --edge-width: 1.5rem;
+}
+
+.fade-out-transparent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  backdrop-filter: blur(4px);
   mask-image: linear-gradient(
     to right,
-    transparent,
-    black var(--edge-width),
-    black calc(100% - var(--edge-width)),
-    transparent
+    black,
+    transparent var(--edge-width),
+    transparent calc(100% - var(--edge-width)),
+    black
   );
 }
 
