@@ -1,5 +1,5 @@
 <template>
-  <div class="content-grid">
+  <div class="content-grid grid-rows-[auto_1fr]">
     <PrimaryHeader />
     <NuxtPage />
   </div>
