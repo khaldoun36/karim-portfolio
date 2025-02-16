@@ -66,22 +66,22 @@ const navLinks = [
     name: "Home",
     path: "/",
   },
-  {
-    name: "Writings",
-    path: "/#writings",
-  },
-  {
-    name: "Services",
-    path: "/#services",
-  },
-  {
-    name: "Projects",
-    path: "/#projects",
-  },
-  {
-    name: "Certificates",
-    path: "/#certificates",
-  },
+  // {
+  //   name: "Writings",
+  //   path: "/#writings",
+  // },
+  // {
+  //   name: "Services",
+  //   path: "/#services",
+  // },
+  // {
+  //   name: "Projects",
+  //   path: "/#projects",
+  // },
+  // {
+  //   name: "Certificates",
+  //   path: "/#certificates",
+  // },
   {
     name: "About me",
     path: "/about-me",
