@@ -4,6 +4,71 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutMeDocumentDataSlicesSlice = AboutMeSlice;
+
+/**
+ * Content for About me documents
+ */
+interface AboutMeDocumentData {
+  /**
+   * Slice Zone field in *About me*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutMeDocumentDataSlicesSlice> /**
+   * Meta Title field in *About me*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about_me.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *About me*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about_me.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *About me*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * About me document from Prismic
+ *
+ * - **API ID**: `about_me`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutMeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutMeDocumentData>,
+    "about_me",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | AboutMeSlice
   | TestimonialsSlice
@@ -201,7 +266,10 @@ export type ProjectpageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | ProjectpageDocument;
+export type AllDocumentTypes =
+  | AboutMeDocument
+  | PageDocument
+  | ProjectpageDocument;
 
 /**
  * Item in *AboutMe → Default → Primary → Social Links*
@@ -695,6 +763,9 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutMeDocument,
+      AboutMeDocumentData,
+      AboutMeDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

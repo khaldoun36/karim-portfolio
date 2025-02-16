@@ -1,25 +1,20 @@
 <template>
-  <SliceZone
-    v-if="status === 'success'"
-    :slices="page?.data?.slices ?? []"
-    :components="components"
-  />
+  <SliceZone :slices="page?.data.slices ?? []" :components="components" />
 </template>
 
 <script setup lang="ts">
 import { components } from "~/slices";
 
 const prismic = usePrismic();
-const { data: page, status } = await useAsyncData("index", () =>
-  prismic.client.getByUID("page", "about-me"),
+const { data: page } = await useAsyncData("[about_me]", () =>
+  prismic.client.getSingle("about_me"),
 );
 
-// Move the head management to a watch effect to properly handle async state
-watchEffect(() => {
-  if (status.value === "success" && page.value?.data?.title) {
-    useHead({
-      title: prismic.asText(page.value.data.title),
-    });
-  }
+useSeoMeta({
+  title: page.value?.data.meta_title,
+  ogTitle: page.value?.data.meta_title,
+  description: page.value?.data.meta_description,
+  ogDescription: page.value?.data.meta_description,
+  ogImage: computed(() => prismic.asImageSrc(page.value?.data.meta_image)),
 });
 </script>

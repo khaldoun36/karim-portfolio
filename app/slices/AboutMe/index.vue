@@ -17,7 +17,7 @@
       <div
         class="bg-primary-200 border-color aspect-square h-auto w-full max-w-[600px] rotate-1 rounded-lg border"
       />
-      <!-- <div class="mt-10 md:mt-12 xl:mt-16">
+      <div class="mt-10 md:mt-12 xl:mt-16">
         <NuxtLink
           v-for="item in slice.primary.social_links"
           :key="item?.link?.url"
@@ -30,7 +30,7 @@
           <Icon v-if="item?.icon" :name="item.icon" class="h-6 w-6" />
           <span>{{ item?.link?.text || "Social Link" }}</span>
         </NuxtLink>
-      </div> -->
+      </div>
     </aside>
   </div>
 </template>
