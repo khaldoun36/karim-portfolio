@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type PageDocumentDataSlicesSlice =
+  | AboutMeSlice
   | TestimonialsSlice
   | ProjectsSectionSlice
   | ServicesSectionSlice
@@ -201,6 +202,98 @@ export type ProjectpageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = PageDocument | ProjectpageDocument;
+
+/**
+ * Item in *AboutMe → Default → Primary → Social Links*
+ */
+export interface AboutMeSliceDefaultPrimarySocialLinksItem {
+  /**
+   * Link field in *AboutMe → Default → Primary → Social Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.social_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Icon field in *AboutMe → Default → Primary → Social Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.social_links[].icon
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  icon: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *AboutMe → Default → Primary*
+ */
+export interface AboutMeSliceDefaultPrimary {
+  /**
+   * Primary Title field in *AboutMe → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.primary_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  primary_title: prismic.RichTextField;
+
+  /**
+   * Body field in *AboutMe → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Social Links field in *AboutMe → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.social_links[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  social_links: prismic.GroupField<
+    Simplify<AboutMeSliceDefaultPrimarySocialLinksItem>
+  >;
+}
+
+/**
+ * Default variation for AboutMe Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutMeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutMeSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutMe*
+ */
+type AboutMeSliceVariation = AboutMeSliceDefault;
+
+/**
+ * AboutMe Shared Slice
+ *
+ * - **API ID**: `about_me`
+ * - **Description**: AboutMe
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutMeSlice = prismic.SharedSlice<
+  "about_me",
+  AboutMeSliceVariation
+>;
 
 /**
  * Primary content in *HeroSection → Default → Primary*
@@ -610,6 +703,11 @@ declare module "@prismicio/client" {
       ProjectpageDocumentDataImportantMetricsItem,
       ProjectpageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AboutMeSlice,
+      AboutMeSliceDefaultPrimarySocialLinksItem,
+      AboutMeSliceDefaultPrimary,
+      AboutMeSliceVariation,
+      AboutMeSliceDefault,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,

@@ -1,0 +1,64 @@
+{
+  "id": "about_me",
+  "type": "SharedSlice",
+  "name": "AboutMe",
+  "description": "AboutMe",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "primary_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Primary Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,heading2"
+          }
+        },
+        "social_links": {
+          "type": "Group",
+          "config": {
+            "label": "Social Links",
+            "repeat": true,
+            "fields": {
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "icon": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

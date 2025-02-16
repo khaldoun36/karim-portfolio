@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "about_me": {
+              "type": "SharedSlice"
+            },
             "testimonials": {
               "type": "SharedSlice"
             },
