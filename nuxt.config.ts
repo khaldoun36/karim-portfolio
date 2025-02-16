@@ -10,6 +10,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/about-me"], // Add your base routes here
+    },
+  },
+
   devtools: { enabled: true },
 
   vite: {
