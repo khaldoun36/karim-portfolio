@@ -68,19 +68,19 @@ const navLinks = [
   },
   {
     name: "Writings",
-    path: "/writings",
+    path: "/#writings",
   },
   {
     name: "Services",
-    path: "/services",
+    path: "/#services",
   },
   {
     name: "Projects",
-    path: "/projects",
+    path: "/#projects",
   },
   {
     name: "Certificates",
-    path: "/certificates",
+    path: "/#certificates",
   },
   {
     name: "About me",
@@ -100,7 +100,14 @@ const navLinks = [
   z-index: -1;
   backdrop-filter: blur(12px);
   background: color-mix(in oklab, var(--color-gray-100), transparent 60%);
-  border-bottom: 1.5px solid var(--color-gray-200);
+  /* https://smoothshadows.com/#djEsMSw1LDAuMDgsMjQsMiwwLCMwMzA3MTIsI2YzZjRmNiwjZmZmZmZmLDI%3D */
+  box-shadow:
+    0px 0px 1px rgba(3, 7, 18, 0.02),
+    0px 0px 4px rgba(3, 7, 18, 0.03),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 1px 15px rgba(3, 7, 18, 0.06),
+    0px 2px 24px rgba(3, 7, 18, 0.06);
+
   opacity: 0;
   transition: opacity 100ms ease-in-out;
 }
