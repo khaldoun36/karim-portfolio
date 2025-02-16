@@ -1,7 +1,7 @@
 <template>
   <SliceZone
     v-if="status === 'success'"
-    :slices="page?.data.slices ?? []"
+    :slices="page?.data?.slices ?? []"
     :components="components"
   />
 </template>
@@ -14,9 +14,12 @@ const { data: page, status } = await useAsyncData("index", () =>
   prismic.client.getByUID("page", "about-me"),
 );
 
-if (status.value === "success") {
-  useHead({
-    title: prismic.asText(page.value?.data.title),
-  });
-}
+// Move the head management to a watch effect to properly handle async state
+watchEffect(() => {
+  if (status.value === "success" && page.value?.data?.title) {
+    useHead({
+      title: prismic.asText(page.value.data.title),
+    });
+  }
+});
 </script>
