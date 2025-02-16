@@ -4,25 +4,31 @@
   >
     <main class="mt-10 md:mt-12 lg:mt-0">
       <h1 class="text-4xl md:text-6xl xl:text-7xl">
-        {{ slice.primary.primary_title[0]?.text }}
+        {{ slice.primary.primary_title?.[0]?.text || "About Me" }}
       </h1>
       <div class="prose prose-p:text-gray-600/75 mt-10 md:mt-12 xl:mt-16">
-        <PrismicRichText :field="slice.primary.body" />
+        <PrismicRichText
+          v-if="slice.primary.body"
+          :field="slice.primary.body"
+        />
       </div>
     </main>
     <aside class="row-start-1 lg:row-start-auto">
       <div
-        class="bg-primary-200 border-color aspect-square h-auto w-full max-w-[600px] rotate-1 rounded-lg"
+        class="bg-primary-200 border-color aspect-square h-auto w-full max-w-[600px] rotate-1 rounded-lg border"
       />
       <div class="mt-10 md:mt-12 xl:mt-16">
         <NuxtLink
           v-for="item in slice.primary.social_links"
           :key="item?.link?.url"
-          :to="item.link.url"
-          class="flex items-center gap-3 text-base font-medium text-gray-800/95 last-of-type:mt-8"
+          :to="item?.link?.url || '#'"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-primary-600 flex items-center gap-3 text-base font-medium text-gray-800/95 transition-colors duration-200"
+          :class="{ 'mt-8': isLastItem(item) }"
         >
-          <Icon :name="item.icon" size="24px" />
-          <span>{{ item.link.text }}</span>
+          <Icon v-if="item?.icon" :name="item.icon" class="h-6 w-6" />
+          <span>{{ item?.link?.text || "Social Link" }}</span>
         </NuxtLink>
       </div>
     </aside>
@@ -32,14 +38,17 @@
 <script setup lang="ts">
 import type { Content } from "@prismicio/client";
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
-defineProps(
-  getSliceComponentProps<Content.AboutMeSlice>([
-    "slice",
-    "index",
-    "slices",
-    "context",
-  ]),
-);
+interface Props {
+  slice: Content.AboutMeSlice;
+  index?: number;
+  slices?: unknown[];
+  context?: unknown;
+}
+
+const props = defineProps<Props>();
+
+const isLastItem = (item: any) => {
+  const socialLinks = props.slice.primary.social_links || [];
+  return socialLinks[socialLinks.length - 1] === item;
+};
 </script>
