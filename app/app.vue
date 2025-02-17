@@ -2,6 +2,7 @@
   <div class="content-grid grid-rows-[auto_1fr]">
     <PrimaryHeader />
     <NuxtPage />
+    <PrimaryFooter />
   </div>
 </template>
 
@@ -10,6 +11,7 @@ import "@/assets/css/theme.css";
 import "@/assets/css/main.css";
 
 import PrimaryHeader from "./components/base/PrimaryHeader.vue";
+import PrimaryFooter from "./components/base/PrimaryFooter.vue";
 </script>
 
 <style>

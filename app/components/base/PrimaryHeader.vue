@@ -13,7 +13,7 @@
       </NuxtLink>
       <nav class="flex items-center gap-8" :class="{ active: isMenuOpen }">
         <NuxtLink
-          v-for="item in navLinks"
+          v-for="item in navLinks.navLinks"
           :key="item.path"
           :to="item.path"
           class="hover:text-primary-500 active:text-primary-600 group flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors"
@@ -44,6 +44,7 @@
 </template>
 
 <script setup>
+import navLinks from "../base/data/navLinks.json";
 const headerTracker = ref(null);
 const isMenuBlurred = ref(false);
 const isMenuOpen = ref(false);
@@ -62,33 +63,6 @@ onMounted(() => {
     observer.disconnect();
   });
 });
-const navLinks = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "Services",
-    path: "/#services",
-  },
-  {
-    name: "Projects",
-    path: "/#projects",
-  },
-  {
-    name: "Writings",
-    path: "/writings",
-  },
-
-  // {
-  //   name: "Certificates",
-  //   path: "/#certificates",
-  // },
-  {
-    name: "About me",
-    path: "/about-me",
-  },
-];
 </script>
 
 <style scoped>
