@@ -10,21 +10,31 @@
       class="@container block"
     >
       <article
-        class="grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.2fr_1fr]"
+        class="group grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.2fr_1fr]"
       >
         <div>
           <p
-            class="max-w-fit rounded-full border border-gray-600 px-4 py-2 text-gray-100"
+            class="max-w-fit rounded-full border border-gray-600 px-4 py-2 text-gray-100 group-hover:brightness-85"
           >
             {{ project.data.category }}
           </p>
-          <div class="mt-8">
+          <div class="mt-8 group-hover:brightness-85">
             <h3 class="text-2xl text-gray-100 @5xl:text-3xl">
               {{ project.data.title }}
             </h3>
             <p class="mt-4 text-base text-gray-400">
               {{ project.data.subtitle }}
             </p>
+            <button
+              class="text-primary-500 group-hover:text-primary-600 relative mt-6 flex max-w-fit cursor-pointer items-center gap-2 text-base font-medium transition-colors"
+            >
+              Read more
+              <Icon
+                name="heroicons-solid:chevron-right"
+                size="20"
+                class="mt-0.25"
+              />
+            </button>
           </div>
         </div>
         <div>
