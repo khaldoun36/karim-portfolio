@@ -69,6 +69,93 @@ export type AboutMeDocument<Lang extends string = string> =
     Lang
   >;
 
+type BlogPostDocumentDataSlicesSlice = RichTextSlice;
+
+/**
+ * Content for Blog Post documents
+ */
+interface BlogPostDocumentData {
+  /**
+   * Primary Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.primary_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_title: prismic.KeyTextField;
+
+  /**
+   * Primary Subtitle field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.primary_subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  primary_subtitle: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Blog Post*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BlogPostDocumentDataSlicesSlice> /**
+   * Meta Title field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blog_post.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Blog Post*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blog_post.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Blog Post*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Blog Post document from Prismic
+ *
+ * - **API ID**: `blog_post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogPostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BlogPostDocumentData>,
+    "blog_post",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | AboutMeSlice
   | TestimonialsSlice
@@ -268,6 +355,7 @@ export type ProjectpageDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutMeDocument
+  | BlogPostDocument
   | PageDocument
   | ProjectpageDocument;
 
@@ -766,6 +854,9 @@ declare module "@prismicio/client" {
       AboutMeDocument,
       AboutMeDocumentData,
       AboutMeDocumentDataSlicesSlice,
+      BlogPostDocument,
+      BlogPostDocumentData,
+      BlogPostDocumentDataSlicesSlice,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

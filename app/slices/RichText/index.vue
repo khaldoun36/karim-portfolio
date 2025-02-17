@@ -14,11 +14,7 @@ defineProps(
 </script>
 
 <template>
-  <section
-    :data-slice-type="slice.slice_type"
-    :data-slice-variation="slice.variation"
-  >
-    Placeholder component for rich_text (variation: {{ slice.variation }})
-    Slices
+  <section class="prose prose-p:text-gray-600/75">
+    <PrismicRichText :field="slice.primary.project_body" />
   </section>
 </template>

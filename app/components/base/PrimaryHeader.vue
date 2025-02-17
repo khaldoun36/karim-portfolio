@@ -66,10 +66,10 @@ const navLinks = [
     name: "Home",
     path: "/",
   },
-  // {
-  //   name: "Writings",
-  //   path: "/#writings",
-  // },
+  {
+    name: "Writings",
+    path: "/writings",
+  },
   // {
   //   name: "Services",
   //   path: "/#services",

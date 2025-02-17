@@ -47,10 +47,10 @@ export default defineNuxtConfig({
     toolbar: false,
     clientConfig: {
       routes: [
-        // {
-        //   type: "page",
-        //   path: "/:uid",
-        // },
+        {
+          type: "blog_post",
+          path: "/writings/:uid",
+        },
         {
           type: "page",
           uid: "home",
