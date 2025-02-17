@@ -13,6 +13,11 @@ import PrimaryHeader from "./components/base/PrimaryHeader.vue";
 </script>
 
 <style>
+html,
+body,
+#__nuxt {
+  scroll-behavior: smooth;
+}
 body {
   background-color: var(--color-gray-100);
 }

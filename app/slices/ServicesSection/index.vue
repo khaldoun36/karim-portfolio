@@ -1,32 +1,36 @@
 <template>
-  <Container>
+  <Container id="services">
     <h2 class="text-4xl md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>
     <p class="mt-6 max-w-2xl text-lg text-pretty">
       {{ slice.primary.body }}
     </p>
+
     <div class="@container mt-10 md:mt-12 xl:mt-16">
       <div class="grid gap-8 @2xl:grid-cols-2 @5xl:grid-cols-3">
         <NuxtLink
           v-for="item in slice.primary.service"
-          :key="String(item.title)"
+          :key="item.title"
           to="https://www.theverge.com/"
-          class="group border-color card relative flex min-w-fit flex-col justify-between rounded-lg border bg-white p-8 pt-16 transition-colors hover:border-gray-300 hover:shadow-sm"
+          class="group card border-color flex flex-col justify-between rounded-lg border bg-white p-8 pt-16 transition hover:border-gray-300 hover:shadow-sm"
         >
           <div>
             <Icon
-              :name="String(item.icon)"
+              :name="item.icon.toString()"
               size="32"
               class="text-gray-800/95"
             />
-            <h3 class="mt-6 text-lg font-semibold">{{ item.title }}</h3>
+            <h3 class="mt-6 text-lg font-semibold">
+              {{ item.title }}
+            </h3>
             <p class="mt-4 text-base text-pretty">
               {{ item.description }}
             </p>
           </div>
+
           <button
-            class="text-primary-500 group-hover:text-primary-600 relative mt-6 flex max-w-fit cursor-pointer items-center gap-2 text-base font-medium transition-colors"
+            class="text-primary-500 group-hover:text-primary-600 mt-6 flex items-center gap-2 text-base font-medium transition"
           >
             Reach out
             <Icon
@@ -45,8 +49,6 @@
 import Container from "~/components/base/Container.vue";
 import type { Content } from "@prismicio/client";
 
-// The array passed to `getSliceComponentProps` is purely optional.
-// Consider it as a visual hint for you when templating your slice.
 defineProps(
   getSliceComponentProps<Content.ServicesSectionSlice>([
     "slice",
@@ -56,5 +58,3 @@ defineProps(
   ]),
 );
 </script>
-
-<style scoped></style>

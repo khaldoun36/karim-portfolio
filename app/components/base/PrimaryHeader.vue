@@ -17,11 +17,12 @@
           :key="item.path"
           :to="item.path"
           class="hover:text-primary-500 active:text-primary-600 group flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors"
-          :class="useRoute().path === item.path ? 'text-primary-600' : ''"
+          :class="useRoute().fullPath === item.path ? 'text-primary-600' : ''"
+          @click="isMenuOpen = !isMenuOpen"
         >
           {{ item.name }}
           <div
-            v-show="useRoute().path === item.path"
+            v-show="useRoute().fullPath === item.path"
             class="bg-primary-600 aspect-square size-1.5 rounded-full"
           />
         </NuxtLink>
@@ -67,17 +68,18 @@ const navLinks = [
     path: "/",
   },
   {
+    name: "Services",
+    path: "/#services",
+  },
+  {
+    name: "Projects",
+    path: "/#projects",
+  },
+  {
     name: "Writings",
     path: "/writings",
   },
-  // {
-  //   name: "Services",
-  //   path: "/#services",
-  // },
-  // {
-  //   name: "Projects",
-  //   path: "/#projects",
-  // },
+
   // {
   //   name: "Certificates",
   //   path: "/#certificates",

@@ -1,5 +1,5 @@
 <template>
-  <Container classList="full-width content-grid bg-gray-800">
+  <Container classList="full-width content-grid bg-gray-800" id="projects">
     <h2 class="text-4xl text-gray-100 md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>
