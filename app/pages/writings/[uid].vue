@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto max-w-[80ch]">
+  <div v-if="page" class="mx-auto max-w-[80ch]">
     <main class="pt-[9.5rem] md:pt-[10.5rem] xl:pt-[12.5rem]">
       <time class="text-base text-pretty opacity-70">
         {{

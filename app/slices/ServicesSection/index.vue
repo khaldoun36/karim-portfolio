@@ -8,19 +8,18 @@
     </p>
 
     <div class="@container mt-10 md:mt-12 xl:mt-16">
-      <div class="grid gap-8 @2xl:grid-cols-2 @5xl:grid-cols-3">
+      <div
+        v-if="slice.primary.service"
+        class="grid gap-8 @2xl:grid-cols-2 @5xl:grid-cols-3"
+      >
         <NuxtLink
           v-for="item in slice.primary.service"
-          :key="item.title"
+          :key="item.title!"
           to="https://www.theverge.com/"
           class="group card border-color flex flex-col justify-between rounded-lg border bg-white p-8 pt-16 transition hover:border-gray-300 hover:shadow-sm"
         >
           <div>
-            <Icon
-              :name="item.icon.toString()"
-              size="32"
-              class="text-gray-800/95"
-            />
+            <Icon :name="item.icon!" size="32" class="text-gray-800/95" />
             <h3 class="mt-6 text-lg font-semibold">
               {{ item.title }}
             </h3>
