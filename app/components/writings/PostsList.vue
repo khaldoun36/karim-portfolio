@@ -12,7 +12,10 @@
         <article
           class="flex max-w-3xl flex-col gap-4 rounded-r-lg hover:bg-gray-200/50 @2xl:flex-row @2xl:items-baseline @2xl:gap-16 @2xl:p-8"
         >
-          <time class="text-base text-pretty opacity-70">
+          <time
+            class="text-base text-pretty opacity-70"
+            style="white-space: nowrap"
+          >
             {{
               new Date(post.last_publication_date).toLocaleDateString("en-US", {
                 month: "long",

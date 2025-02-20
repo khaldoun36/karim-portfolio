@@ -1,13 +1,10 @@
 <template>
-  <div
-    v-if="projects"
-    class="mt-10 grid gap-8 divide-y divide-gray-200 md:mt-12 xl:mt-16"
-  >
+  <div v-if="projects" class="mt-10 grid md:mt-12 xl:mt-16">
     <NuxtLink
       v-for="project in projects.length <= 3 ? projects : projects.slice(0, 3)"
       :key="project.id"
       :to="`/projects/${project.uid}`"
-      class="@container block"
+      class="@container block py-4 last-of-type:border-0 md:border-b md:border-gray-600/80 md:py-6 xl:py-8"
     >
       <article
         class="group grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.2fr_1fr]"
@@ -44,7 +41,7 @@
             :width="project.data.main_image.dimensions?.width"
             :height="project.data.main_image.dimensions?.height"
             sizes="380px xl:480px"
-            class="aspect-[4/3] h-auto w-full rounded-lg object-cover"
+            class="aspect-[3/3] h-auto w-full rounded-lg object-cover"
             loading="lazy"
           />
         </div>

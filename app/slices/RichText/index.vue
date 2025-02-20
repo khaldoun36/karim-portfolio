@@ -14,7 +14,9 @@ defineProps(
 </script>
 
 <template>
-  <section class="prose prose-p:text-gray-600/75 max-w-[80ch]">
+  <section
+    class="prose prose-p:text-gray-600/75 max-w-[80ch] pb-10 md:pb-12 xl:pb-16"
+  >
     <PrismicRichText :field="slice.primary.project_body" />
   </section>
 </template>
