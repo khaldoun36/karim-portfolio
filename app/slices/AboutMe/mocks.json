@@ -21,22 +21,26 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"link",
-								{
-									"key": "97945c18-ea06-46c5-b48a-ceb72d657182",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://prismic.io",
-										"text": "driven"
-									}
-								}
-							],
-							[
 								"icon",
 								{
 									"__TYPE__": "FieldContent",
 									"value": "available",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "known",
+									"type": "Text"
+								}
+							],
+							[
+								"link_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "fur",
 									"type": "Text"
 								}
 							]
@@ -54,6 +58,29 @@
 						}
 					}
 				]
+			},
+			"main_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+					"width": 4016,
+					"height": 6016
+				},
+				"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+				"width": 4016,
+				"height": 6016,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
 			}
 		},
 		"items": []

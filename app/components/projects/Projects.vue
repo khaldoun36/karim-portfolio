@@ -34,17 +34,16 @@
             </button>
           </div>
         </div>
-        <div>
-          <NuxtImg
-            :src="String(project.data.main_image.url)"
-            :alt="String(project.data.main_image.alt)"
-            :width="project.data.main_image.dimensions?.width"
-            :height="project.data.main_image.dimensions?.height"
-            sizes="380px xl:480px"
-            class="aspect-[3/3] h-auto w-full rounded-lg object-cover"
-            loading="lazy"
-          />
-        </div>
+
+        <NuxtImg
+          :src="String(project.data.main_image.url)"
+          :alt="String(project.data.main_image.alt)"
+          :width="project.data.main_image.dimensions?.width"
+          :height="project.data.main_image.dimensions?.height"
+          sizes="380px xl:480px"
+          class="aspect-square h-auto w-full rounded-lg object-cover"
+          loading="lazy"
+        />
       </article>
     </NuxtLink>
   </div>

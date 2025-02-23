@@ -364,14 +364,24 @@ export type AllDocumentTypes =
  */
 export interface AboutMeSliceDefaultPrimarySocialLinksItem {
   /**
+   * Link Text field in *AboutMe → Default → Primary → Social Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.social_links[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
    * Link field in *AboutMe → Default → Primary → Social Links*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: about_me.default.primary.social_links[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+  link: prismic.KeyTextField;
 
   /**
    * Icon field in *AboutMe → Default → Primary → Social Links*
@@ -388,6 +398,16 @@ export interface AboutMeSliceDefaultPrimarySocialLinksItem {
  * Primary content in *AboutMe → Default → Primary*
  */
 export interface AboutMeSliceDefaultPrimary {
+  /**
+   * Main Image field in *AboutMe → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
   /**
    * Primary Title field in *AboutMe → Default → Primary*
    *

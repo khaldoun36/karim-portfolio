@@ -12,6 +12,14 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "main_image": {
+          "type": "Image",
+          "config": {
+            "label": "Main Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "primary_title": {
           "type": "StructuredText",
           "config": {
@@ -36,15 +44,18 @@
             "label": "Social Links",
             "repeat": true,
             "fields": {
+              "link_text": {
+                "type": "Text",
+                "config": {
+                  "label": "Link Text",
+                  "placeholder": ""
+                }
+              },
               "link": {
-                "type": "Link",
+                "type": "Text",
                 "config": {
                   "label": "Link",
-                  "placeholder": "",
-                  "select": null,
-                  "allowTargetBlank": true,
-                  "allowText": true,
-                  "repeat": false
+                  "placeholder": ""
                 }
               },
               "icon": {
