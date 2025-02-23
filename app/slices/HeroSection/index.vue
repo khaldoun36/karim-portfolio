@@ -17,7 +17,7 @@
       class="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8"
     >
       <Button
-        href="https://www.theverge.com/"
+        href="mailto:karim@kimzly.com"
         target="_blank"
         rel="noopener noreferrer"
         class="button !min-w-full sm:!min-w-fit"
@@ -27,9 +27,7 @@
         <Icon name="heroicons-outline:mail" size="1.25rem" />
       </Button>
       <Button
-        href="https://www.theverge.com/"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/#services"
         class="button !min-w-full sm:!min-w-fit"
         variant="secondary"
       >

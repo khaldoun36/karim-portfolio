@@ -15,7 +15,9 @@
         <NuxtLink
           v-for="item in slice.primary.service"
           :key="item.title!"
-          to="https://www.theverge.com/"
+          to="mailto:karim@kimzly.com"
+          target="_blank"
+          rel="noopener noreferrer"
           class="group card border-color flex flex-col justify-between rounded-lg border bg-white p-8 pt-16 transition hover:border-gray-300 hover:shadow-sm"
         >
           <div>
