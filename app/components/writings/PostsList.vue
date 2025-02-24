@@ -8,7 +8,7 @@
       :key="post.id"
       class="mb-10 md:mb-12 xl:mb-16"
     >
-      <NuxtLink :to="`/writings/${post.uid}`" class="@container block">
+      <NuxtLink :to="`/blog/${post.uid}`" class="@container block">
         <article
           class="flex max-w-3xl flex-col gap-4 rounded-r-lg hover:bg-gray-200/50 @2xl:flex-row @2xl:items-baseline @2xl:gap-16 @2xl:p-8"
         >

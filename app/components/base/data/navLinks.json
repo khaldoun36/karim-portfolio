@@ -5,20 +5,20 @@
       "path": "/"
     },
     {
+      "name": "About me",
+      "path": "/about-me"
+    },
+    {
       "name": "Services",
       "path": "/#services"
     },
     {
-      "name": "Projects",
-      "path": "/#projects"
+      "name": "Case studies",
+      "path": "/case-studies"
     },
     {
-      "name": "Writings",
-      "path": "/writings"
-    },
-    {
-      "name": "About me",
-      "path": "/about-me"
+      "name": "Blog",
+      "path": "/blog"
     }
   ]
 }

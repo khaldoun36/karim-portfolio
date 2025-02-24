@@ -1,25 +1,33 @@
 <template>
   <div v-if="projects" class="mt-10 grid md:mt-12 xl:mt-16">
     <NuxtLink
-      v-for="project in projects.length <= 3 ? projects : projects.slice(0, 3)"
+      v-for="project in isHomePage ? projects.slice(0, 3) : projects"
       :key="project.id"
-      :to="`/projects/${project.uid}`"
+      :to="`/case-studies/${project.uid}`"
       class="@container block py-4 last-of-type:border-0 md:border-b md:border-gray-600/80 md:py-6 xl:py-8"
+      :class="{ '!border-color': isHomePage }"
     >
       <article
         class="group grid gap-8 @2xl:grid-cols-[1fr_1.2fr] @2xl:place-items-center @2xl:gap-16 @5xl:grid-cols-[1.2fr_1fr]"
       >
-        <div>
+        <div class="justify-self-start">
           <p
             class="max-w-fit rounded-full border border-gray-600 px-4 py-2 text-gray-100 group-hover:brightness-85"
+            :class="{ '!border-color !text-gray-600/75': isHomePage }"
           >
             {{ project.data.category }}
           </p>
           <div class="mt-8 group-hover:brightness-85">
-            <h3 class="text-2xl text-gray-100 @5xl:text-3xl">
+            <h3
+              class="text-2xl text-gray-100 @5xl:text-3xl"
+              :class="{ '!text-gray-800/95': isHomePage }"
+            >
               {{ project.data.title }}
             </h3>
-            <p class="mt-4 text-base text-gray-400">
+            <p
+              class="mt-4 text-base text-gray-400"
+              :class="{ '!text-gray-600/75': isHomePage }"
+            >
               {{ project.data.subtitle }}
             </p>
             <button
@@ -51,6 +59,13 @@
 
 <script setup>
 const prismic = usePrismic();
+
+const props = defineProps({
+  isHomePage: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 // retrieve a list of the projects
 const { data: projects } = await useAsyncData(() =>

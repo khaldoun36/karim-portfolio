@@ -1,5 +1,5 @@
 <template>
-  <Container classList="full-width content-grid">
+  <Container classList="full-width content-grid pb-0 md:pb-0 lg:pb-0 xl:pb-0">
     <h2 class="mx-auto text-center text-4xl md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>

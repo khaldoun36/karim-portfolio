@@ -69,7 +69,7 @@ export type AboutMeDocument<Lang extends string = string> =
     Lang
   >;
 
-type BlogPostDocumentDataSlicesSlice = RichTextSlice;
+type BlogPostDocumentDataSlicesSlice = CallToActionSlice | RichTextSlice;
 
 /**
  * Content for Blog Post documents
@@ -157,6 +157,7 @@ export type BlogPostDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | CallToActionSlice
   | AboutMeSlice
   | TestimonialsSlice
   | ProjectsSectionSlice
@@ -227,7 +228,7 @@ export interface ProjectpageDocumentDataImportantMetricsItem {
   percentage: prismic.NumberField;
 }
 
-type ProjectpageDocumentDataSlicesSlice = RichTextSlice;
+type ProjectpageDocumentDataSlicesSlice = CallToActionSlice | RichTextSlice;
 
 /**
  * Content for ProjectPage documents
@@ -469,6 +470,86 @@ type AboutMeSliceVariation = AboutMeSliceDefault;
 export type AboutMeSlice = prismic.SharedSlice<
   "about_me",
   AboutMeSliceVariation
+>;
+
+/**
+ * Item in *CallToAction → Default → Primary → Link*
+ */
+export interface CallToActionSliceDefaultPrimaryLinkItem {
+  /**
+   * Text field in *CallToAction → Default → Primary → Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.link[].text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Link Field field in *CallToAction → Default → Primary → Link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.link[].link_field
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_field: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *CallToAction → Default → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+  /**
+   * Title field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Link field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.link[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  link: prismic.GroupField<Simplify<CallToActionSliceDefaultPrimaryLinkItem>>;
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CallToActionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation = CallToActionSliceDefault;
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: CallToAction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlice = prismic.SharedSlice<
+  "call_to_action",
+  CallToActionSliceVariation
 >;
 
 /**
@@ -890,6 +971,11 @@ declare module "@prismicio/client" {
       AboutMeSliceDefaultPrimary,
       AboutMeSliceVariation,
       AboutMeSliceDefault,
+      CallToActionSlice,
+      CallToActionSliceDefaultPrimaryLinkItem,
+      CallToActionSliceDefaultPrimary,
+      CallToActionSliceVariation,
+      CallToActionSliceDefault,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,

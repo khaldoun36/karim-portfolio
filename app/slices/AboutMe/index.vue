@@ -6,25 +6,20 @@
       <div class="text-4xl text-balance md:text-6xl xl:text-7xl">
         <PrismicRichText :field="slice.primary.primary_title" />
       </div>
-      <div
-        class="prose prose-p:text-gray-600/75 mt-10 pb-20 md:mt-12 md:pb-24 xl:mt-16 xl:pb-32"
-      >
+      <div class="prose prose-p:text-gray-600/75 mt-10 md:mt-12 xl:mt-16">
         <PrismicRichText
           v-if="slice.primary.body"
           :field="slice.primary.body"
         />
       </div>
     </main>
-    <aside
-      v-if="slice.primary.main_image"
-      class="row-start-1 lg:row-start-auto"
-    >
+    <aside v-if="slice.primary.main_image">
       <NuxtImg
         :src="slice.primary.main_image?.url"
         :alt="slice.primary.main_image?.alt"
         :width="slice.primary.main_image.dimensions?.width"
         :height="slice.primary.main_image.dimensions?.height"
-        class="bg-primary-200 border-color aspect-square h-auto w-full max-w-[600px] rotate-1 rounded-lg border object-cover"
+        class="bg-primary-200 border-color aspect-square h-auto w-full max-w-[600px] rounded-lg border object-cover lg:rotate-1"
       />
       <div class="mt-10 md:mt-12 xl:mt-16">
         <NuxtLink

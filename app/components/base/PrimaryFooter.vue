@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="border-color flex flex-col items-start justify-between gap-8 border-t py-5 md:items-center lg:flex-row"
+    class="border-color mt-20 flex flex-col items-start justify-between gap-8 border-t py-5 md:mt-24 md:items-center lg:flex-row xl:mt-32"
   >
     <nav
       class="flex flex-col items-start justify-start gap-8 md:flex-row md:justify-center"
