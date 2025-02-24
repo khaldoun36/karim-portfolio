@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Prismic + Nuxt Minimal Starter",
+      title: "Karim",
       htmlAttrs: {
         lang: "en",
       },
