@@ -1,6 +1,6 @@
 <template>
   <main class="pt-[9.5rem] md:pt-[10.5rem] xl:pt-[12.5rem]">
-    <Projects isHomePage="false" />
+    <Projects :isHomePage="true" />
   </main>
 </template>
 
