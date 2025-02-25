@@ -9,8 +9,7 @@
       v-for="item in slice.primary.link"
       :key="item.link_field"
       :href="`mailto:${item.link_field}`"
-      variant="primary max-w-min md:mx-auto"
-      class="mt-8"
+      class="mt-8 max-w-min md:mx-auto"
       >{{ item.text }}</Button
     >
   </section>

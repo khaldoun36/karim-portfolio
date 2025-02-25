@@ -157,6 +157,7 @@ export type BlogPostDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | CertificatesSlice
   | CallToActionSlice
   | AboutMeSlice
   | TestimonialsSlice
@@ -550,6 +551,88 @@ type CallToActionSliceVariation = CallToActionSliceDefault;
 export type CallToActionSlice = prismic.SharedSlice<
   "call_to_action",
   CallToActionSliceVariation
+>;
+
+/**
+ * Item in *Certificates → Default → Primary → Certificates*
+ */
+export interface CertificatesSliceDefaultPrimaryCertificatesItem {
+  /**
+   * Logo field in *Certificates → Default → Primary → Certificates*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certificates.default.primary.certificates[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Certificates → Default → Primary → Certificates*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certificates.default.primary.certificates[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Certificates → Default → Primary*
+ */
+export interface CertificatesSliceDefaultPrimary {
+  /**
+   * Section Title field in *Certificates → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certificates.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Certificates field in *Certificates → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certificates.default.primary.certificates[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  certificates: prismic.GroupField<
+    Simplify<CertificatesSliceDefaultPrimaryCertificatesItem>
+  >;
+}
+
+/**
+ * Default variation for Certificates Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CertificatesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CertificatesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Certificates*
+ */
+type CertificatesSliceVariation = CertificatesSliceDefault;
+
+/**
+ * Certificates Shared Slice
+ *
+ * - **API ID**: `certificates`
+ * - **Description**: Certificates
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CertificatesSlice = prismic.SharedSlice<
+  "certificates",
+  CertificatesSliceVariation
 >;
 
 /**
@@ -976,6 +1059,11 @@ declare module "@prismicio/client" {
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,
       CallToActionSliceDefault,
+      CertificatesSlice,
+      CertificatesSliceDefaultPrimaryCertificatesItem,
+      CertificatesSliceDefaultPrimary,
+      CertificatesSliceVariation,
+      CertificatesSliceDefault,
       HeroSectionSlice,
       HeroSectionSliceDefaultPrimary,
       HeroSectionSliceVariation,

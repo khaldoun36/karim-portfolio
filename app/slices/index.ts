@@ -8,6 +8,7 @@ export const components = defineSliceZoneComponents({
   call_to_action: defineAsyncComponent(
     () => import("./CallToAction/index.vue"),
   ),
+  certificates: defineAsyncComponent(() => import("./Certificates/index.vue")),
   hero_section: defineAsyncComponent(() => import("./HeroSection/index.vue")),
   projects_section: defineAsyncComponent(
     () => import("./ProjectsSection/index.vue"),
