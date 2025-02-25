@@ -1,14 +1,12 @@
 <template>
-  <Container classList="full-width content-grid">
+  <Container classList="full-width overflow-clip">
     <h2 class="mx-auto text-center text-4xl md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>
     <p class="mx-auto mt-6 max-w-2xl text-center text-lg text-pretty">
       {{ slice.primary.body }}
     </p>
-    <div
-      class="full-width marquee fade-out-transparent mt-10 max-w-screen overflow-clip md:mt-12 xl:mt-16"
-    >
+    <div class="marquee fade-out-transparent mt-10 md:mt-12 xl:mt-16">
       <div v-if="slice.primary.testimonial" class="marquee-track">
         <article
           v-for="(item, index) in [

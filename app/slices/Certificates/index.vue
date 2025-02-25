@@ -1,17 +1,17 @@
 <template>
   <Container
-    classList="pb-0 md:pb-0 xl:pb-0 full-width content-grid"
+    classList="pb-0 md:pb-0 xl:pb-0 full-width overflow-clip max-h-min"
     is="section"
   >
     <h2 class="text-center text-base">
       {{ slice.primary.section_title }}
     </h2>
-    <div class="full-width marquee fade-out-transparent flex max-w-screen">
+    <div class="marquee fade-out-transparent flex">
       <div class="marquee-track pt-10 md:pt-12 xl:pt-16">
         <div
           v-for="(item, index) in slice.primary.certificates"
           :key="`original-${index}`"
-          class="marquee-item flex items-center gap-2"
+          class="marquee-item flex items-center gap-2 overflow-clip"
         >
           <div
             class="border-color aspect-square h-auto w-full max-w-16 min-w-16 overflow-clip rounded-full border p-0.5"
