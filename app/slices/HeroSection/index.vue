@@ -3,7 +3,6 @@
     class="hero-section full-width content-grid grid h-[calc(100vh-32px)] place-content-center"
   >
     <NuxtImg
-      preload
       src="images/heroImage.avif"
       alt="background image"
       width="1440"
