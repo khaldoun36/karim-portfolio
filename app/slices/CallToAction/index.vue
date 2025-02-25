@@ -1,8 +1,8 @@
 <template>
   <section
-    class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full place-content-center rounded-lg border p-8 md:mt-24 xl:mt-32"
+    class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full max-w-full place-content-center rounded-lg border p-8 md:mt-24 xl:mt-32"
   >
-    <span class="block text-4xl md:text-center md:text-6xl xl:text-7xl">
+    <span class="block text-3xl md:text-center md:text-5xl xl:text-6xl">
       <PrismicRichText :field="slice.primary.title" />
     </span>
     <Button
