@@ -2,7 +2,7 @@
   <section
     class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full place-content-center rounded-lg border p-8 md:mt-24 xl:mt-32"
   >
-    <span class="block text-2xl md:text-center md:text-4xl xl:text-5xl">
+    <span class="block text-4xl md:text-center md:text-6xl xl:text-7xl">
       <PrismicRichText :field="slice.primary.title" />
     </span>
     <Button

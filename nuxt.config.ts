@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@vueuse/nuxt",
     "@nuxt/image",
+    "@nuxtjs/seo",
   ],
 
   prismic: {

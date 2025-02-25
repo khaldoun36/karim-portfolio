@@ -1,5 +1,5 @@
 <template>
-  <div class="content-grid grid-rows-[auto_1fr]">
+  <div class="content-grid grid-rows-[auto_1fr_auto]">
     <PrimaryHeader />
     <NuxtPage />
     <PrimaryFooter />
@@ -12,8 +12,21 @@ import "@/assets/css/main.css";
 
 import PrimaryHeader from "./components/base/PrimaryHeader.vue";
 import PrimaryFooter from "./components/base/PrimaryFooter.vue";
-</script>
 
+const { client } = usePrismic();
+// Fetch a single document by its type
+const { data: seoData } = await useAsyncData("seoData", () =>
+  client.getSingle("main_seo"),
+);
+
+useSeoMeta({
+  title: seoData.value?.data.main_title || "Default Title",
+  ogTitle: seoData.value?.data.main_title || "Default Title",
+  description: seoData.value?.data.meta_description || "Default Description",
+  ogDescription: seoData.value?.data.meta_description || "Default Description",
+  ogImage: seoData.value?.data.og_image?.url || "",
+});
+</script>
 <style>
 html,
 body,

@@ -156,6 +156,60 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Main SEO documents
+ */
+interface MainSeoDocumentData {
+  /**
+   * Main Title field in *Main SEO*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_seo.main_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  main_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Main SEO*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_seo.meta_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * OG Image field in *Main SEO*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_seo.og_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  og_image: prismic.ImageField<never>;
+}
+
+/**
+ * Main SEO document from Prismic
+ *
+ * - **API ID**: `main_seo`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MainSeoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<MainSeoDocumentData>,
+    "main_seo",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | CertificatesSlice
   | CallToActionSlice
@@ -358,6 +412,7 @@ export type ProjectpageDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | AboutMeDocument
   | BlogPostDocument
+  | MainSeoDocument
   | PageDocument
   | ProjectpageDocument;
 
@@ -1051,6 +1106,8 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      MainSeoDocument,
+      MainSeoDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
