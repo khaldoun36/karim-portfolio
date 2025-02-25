@@ -81,6 +81,17 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"primary_subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Esse sunt in eu Lorem ad laborum quis mollit consectetur exercitation eu non deserunt qui. Mollit ipsum ex est deserunt excepteur. Occaecat nisi occaecat non reprehenderit id nulla elit nisi."
+						}
+					}
+				]
 			}
 		},
 		"items": []

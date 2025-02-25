@@ -421,6 +421,16 @@ export interface AboutMeSliceDefaultPrimary {
   primary_title: prismic.RichTextField;
 
   /**
+   * Primary Subtitle field in *AboutMe → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_me.default.primary.primary_subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  primary_subtitle: prismic.RichTextField;
+
+  /**
    * Body field in *AboutMe → Default → Primary*
    *
    * - **Field Type**: Rich Text

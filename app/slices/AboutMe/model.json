@@ -29,6 +29,15 @@
             "multi": "heading1"
           }
         },
+        "primary_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Primary Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
         "body": {
           "type": "StructuredText",
           "config": {
