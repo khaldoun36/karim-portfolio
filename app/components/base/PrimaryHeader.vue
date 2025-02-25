@@ -32,6 +32,7 @@
         class="menu-container z-10"
         :class="{ active: isMenuOpen }"
         @click="isMenuOpen = !isMenuOpen"
+        aria-label="Hamburger Menu"
       >
         <div class="line line-1" />
         <div class="line line-2" />
