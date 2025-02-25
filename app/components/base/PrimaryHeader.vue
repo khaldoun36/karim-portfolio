@@ -7,6 +7,7 @@
       <NuxtLink to="/" aria-label="Home Button">
         <NuxtImg
           src="/logo.jpeg"
+          alt="logo"
           sizes="48px"
           class="aspect-square h-auto w-full max-w-12 rounded-full object-cover"
         />
