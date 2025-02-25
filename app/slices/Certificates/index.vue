@@ -6,18 +6,32 @@
     <h2 class="text-center text-base">
       {{ slice.primary.section_title }}
     </h2>
-    <div
-      class="full-width marquee fade-out-transparent flex max-w-screen gap-8"
-    >
+    <div class="full-width marquee fade-out-transparent flex max-w-screen">
       <div class="marquee-track pt-10 md:pt-12 xl:pt-16">
         <div
-          v-for="(item, index) in [
-            ...slice.primary.certificates,
-            ...slice.primary.certificates,
-          ]"
-          :key="item.title"
+          v-for="(item, index) in slice.primary.certificates"
+          :key="`original-${index}`"
           class="marquee-item flex items-center gap-2"
-          :aria-hidden="index >= slice.primary.certificates.length"
+        >
+          <div
+            class="border-color aspect-square h-auto w-full max-w-16 min-w-16 overflow-clip rounded-full border p-0.5"
+          >
+            <NuxtImg
+              :src="item.logo.url"
+              :alt="item.logo.alt"
+              :width="item.logo.dimensions?.width"
+              :height="item.logo.dimensions?.height"
+              class="aspect-square h-auto w-full rounded-full object-cover"
+            />
+          </div>
+          <span class="whitespace-nowrap">{{ item.title }}</span>
+        </div>
+        <!-- Duplicate items for continuous scrolling -->
+        <div
+          v-for="(item, index) in slice.primary.certificates"
+          :key="`duplicate-${index}`"
+          class="marquee-item flex items-center gap-2"
+          aria-hidden="true"
         >
           <div
             class="border-color aspect-square h-auto w-full max-w-16 min-w-16 overflow-clip rounded-full border p-0.5"
@@ -78,10 +92,16 @@ defineProps(
     transform: translateX(0);
   }
   100% {
-    /* This should be the full width of your first set of items */
-    transform: translateX(calc(-50%));
+    /* This value needs to be exactly the width of your first set of items */
+    transform: translateX(calc(-100% / 2));
   }
 }
+
+.marquee-item {
+  /* Ensure consistent width for each item */
+  flex-shrink: 0;
+}
+
 .marquee-track::-webkit-scrollbar {
   display: none;
 }
@@ -99,6 +119,7 @@ defineProps(
   width: 100%;
   height: 100%;
   z-index: 1;
+  pointer-events: none;
   backdrop-filter: blur(4px);
   mask-image: linear-gradient(
     to right,

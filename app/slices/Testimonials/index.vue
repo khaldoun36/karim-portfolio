@@ -1,5 +1,5 @@
 <template>
-  <Container classList="w-full content-grid pb-0 md:pb-0 lg:pb-0 xl:pb-0">
+  <Container classList="full-width content-grid">
     <h2 class="mx-auto text-center text-4xl md:text-6xl xl:text-7xl">
       {{ slice.primary.title }}
     </h2>
@@ -7,7 +7,7 @@
       {{ slice.primary.body }}
     </p>
     <div
-      class="marquee fade-out-transparent mt-10 w-full overflow-hidden md:mt-12 xl:mt-16"
+      class="full-width marquee fade-out-transparent mt-10 max-w-screen overflow-clip md:mt-12 xl:mt-16"
     >
       <div v-if="slice.primary.testimonial" class="marquee-track">
         <article
@@ -15,8 +15,8 @@
             ...slice.primary.testimonial,
             ...slice.primary.testimonial,
           ]"
-          :key="String(item.author) + index"
-          class="border-color marquee-item mx-2 flex h-auto w-[calc(100vw-2rem)] max-w-[calc(100vw-2rem)] flex-col justify-between rounded-lg border bg-white p-8 md:w-[80ch] md:max-w-[80ch] md:min-w-[80ch]"
+          :key="String(item.author)"
+          class="border-color marquee-item mx-2 flex h-auto w-[calc(100vw-1rem)] max-w-[calc(100vw-1rem)] flex-col justify-between rounded-lg border bg-white p-8 md:max-w-[80ch] md:min-w-[80ch]"
           :aria-hidden="index >= slice.primary.testimonial.length"
         >
           <p class="text-base">
@@ -72,18 +72,10 @@ defineProps(
 </script>
 
 <style scoped>
-.marquee {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
 .marquee-track {
   display: flex;
   width: max-content;
+  overflow-x: scroll;
   animation: marquee-animation 32s linear infinite;
 }
 
@@ -92,41 +84,28 @@ defineProps(
     animation-play-state: paused;
   }
 }
-
 @keyframes marquee-animation {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
 
-.fade-out-transparent {
-  position: relative;
-  --edge-width: 1.5rem;
+.marquee-track::-webkit-scrollbar {
+  display: none;
 }
 
-.fade-out-transparent::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  backdrop-filter: blur(4px);
+.fade-out-transparent {
+  --edge-width: 1.5rem;
   mask-image: linear-gradient(
     to right,
-    black,
-    transparent var(--edge-width),
-    transparent calc(100% - var(--edge-width)),
-    black
+    transparent,
+    black var(--edge-width),
+    black calc(100% - var(--edge-width)),
+    transparent
   );
-  pointer-events: none;
 }
 
-@media screen and (min-width: 48rem) {
+@media screen and (width >= 48rem) {
   .fade-out-transparent {
     --edge-width: 5rem;
   }
