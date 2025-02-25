@@ -5,6 +5,7 @@
     <NuxtImg
       src="images/heroImage.avif"
       loading="lazy"
+      alt="background image"
       width="1440"
       height="800"
       sizes="100vw sm:100vw md:100vw"

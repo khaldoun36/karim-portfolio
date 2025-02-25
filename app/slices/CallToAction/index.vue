@@ -4,6 +4,7 @@
   >
     <NuxtImg
       src="images/heroImage.avif"
+      alt="background image"
       loading="lazy"
       width="1440"
       height="800"
