@@ -1,7 +1,14 @@
 <template>
   <section
-    class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full max-w-full place-content-center rounded-lg border p-8 md:mt-24 xl:mt-32"
+    class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full max-w-full place-content-center overflow-clip rounded-lg border p-8 md:mt-24 xl:mt-32"
   >
+    <NuxtImg
+      src="images/heroImage.avif"
+      loading="lazy"
+      width="1440"
+      height="800"
+      class="border-color absolute inset-0 -z-1 min-h-full min-w-full border-b opacity-60"
+    />
     <span class="block text-3xl md:text-center md:text-5xl xl:text-6xl">
       <PrismicRichText :field="slice.primary.title" />
     </span>
@@ -31,17 +38,4 @@ defineProps(
 );
 </script>
 
-<style scoped>
-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: url("@/assets/images/heroImage.avif") no-repeat center center /
-    cover;
-  opacity: 0.55;
-  border-radius: var(--radius-lg);
-}
-</style>
+<style scoped></style>

@@ -1,8 +1,15 @@
 <template>
-  <!-- pb-20 md:pb-24 xl:pb-32 pt-40 md:pt-48 xl:pt-32 -->
   <main
-    class="hero-section full-width content-grid border-color relative grid h-[calc(100vh-32px)] place-content-center border-b"
+    class="hero-section full-width content-grid grid h-[calc(100vh-32px)] place-content-center"
   >
+    <NuxtImg
+      src="images/heroImage.avif"
+      loading="lazy"
+      width="1440"
+      height="800"
+      sizes="100vw sm:100vw md:100vw"
+      class="full-width border-color absolute top-0 right-0 left-0 -z-1 h-[calc(100vh-32px)] min-w-full border-b opacity-60"
+    />
     <div class="mx-auto">
       <h1
         class="mx-auto max-w-4xl text-center text-4xl md:text-6xl xl:text-7xl"
@@ -57,17 +64,3 @@ defineProps(
   ]),
 );
 </script>
-
-<style>
-.hero-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: url("@/assets/images/heroImage.avif") no-repeat center center /
-    cover;
-  opacity: 0.6;
-}
-</style>
