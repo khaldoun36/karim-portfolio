@@ -73,4 +73,15 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2025-01-06",
+
+  routeRules: {
+    // Homepage pre-rendered at build time
+    "/": { prerender: true },
+    "/blog": { isr: 86400 },
+    // Blog post page generated on demand once until next deployment, cached on CDN
+    "/blog/**": { isr: true },
+    "/case-studies": { isr: 86400 },
+    // Blog post page generated on demand once until next deployment, cached on CDN
+    "/case-studies/**": { isr: true },
+  },
 });
