@@ -1,6 +1,6 @@
 <template>
   <section
-    class="border-color relative mt-20 grid aspect-[5/4] h-auto max-h-[400px] w-full max-w-full place-content-center overflow-clip rounded-lg border p-8 md:mt-24 xl:mt-32"
+    class="border-color relative grid aspect-[5/4] h-auto max-h-[400px] w-full max-w-full place-content-center overflow-clip rounded-lg border p-8"
   >
     <NuxtImg
       src="images/heroImage.avif"
