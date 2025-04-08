@@ -28,6 +28,17 @@
           />
         </NuxtLink>
       </nav>
+      <Button
+        id="email_cta"
+        href="mailto:karim@kimzly.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="button"
+        variant="primary"
+      >
+        Contact me
+        <Icon name="heroicons-outline:mail" size="1.25rem" />
+      </Button>
       <button
         class="menu-container z-10"
         :class="{ active: isMenuOpen }"
@@ -46,6 +57,7 @@
 </template>
 
 <script setup>
+import Button from "./Button.vue";
 import navLinks from "../base/data/navLinks.json";
 const headerTracker = ref(null);
 const isMenuBlurred = ref(false);
@@ -98,6 +110,9 @@ onMounted(() => {
 }
 
 @media screen and (width <= 50rem) {
+  #email_cta {
+    display: none;
+  }
   nav {
     position: fixed;
     inset: 0;

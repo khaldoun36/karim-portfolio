@@ -15,6 +15,7 @@
     </span>
     <Button
       v-for="item in slice.primary.link"
+      id="email_cta"
       :key="item.link_field"
       :href="`mailto:${item.link_field}`"
       class="mt-8 max-w-min md:mx-auto"

@@ -14,6 +14,7 @@
       >
         <NuxtLink
           v-for="item in slice.primary.service"
+          id="email_cta"
           :key="item.title!"
           to="mailto:karim@kimzly.com"
           target="_blank"

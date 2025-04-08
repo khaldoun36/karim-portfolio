@@ -46,6 +46,7 @@
       <div v-if="socialLinks.length" class="mt-10 md:mt-12 xl:mt-16">
         <NuxtLink
           v-for="(item, index) in socialLinks"
+          :id="isEmail(item.link) ? 'email_cta' : 'linkedin_cta'"
           :key="index"
           :to="isEmail(item.link) ? `mailto:${item.link}` : item.link"
           target="_blank"

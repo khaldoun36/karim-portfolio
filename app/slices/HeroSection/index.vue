@@ -24,6 +24,7 @@
       class="mt-8 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8"
     >
       <Button
+        id="email_cta"
         href="mailto:karim@kimzly.com"
         target="_blank"
         rel="noopener noreferrer"
